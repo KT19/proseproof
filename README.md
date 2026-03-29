@@ -5,7 +5,7 @@
 An AI-powered writing assistant that provides real-time grammar corrections, style tips, and scoring powered by local AI.
 
 <div align="center">
- <img src="screenshot/image.png" alt="screenshot" width="50%">
+ <img src="screenshot/image.png" alt="screenshot">
 </div>
 
 ## Features
