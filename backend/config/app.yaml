@@ -1,0 +1,28 @@
+# ================================
+# ProseProof Configuration
+# ================================
+
+# Application settings
+app:
+  name: "ProseProof"         # Application name
+  debug: true                    # Enable debug mode
+  host: "0.0.0.0"               # Server host
+  port: 8000                    # Server port
+
+# Database settings
+database:
+  url: "sqlite:///./documents.db"  # Database URL (SQLite)
+  echo: false                  # Log SQL queries (for debugging)
+
+# Ollama AI settings
+ollama:
+  base_url: "http://localhost:11434"  # Ollama server URL
+  model: "gemma3:4b"              # AI model to use
+  timeout: 120                   # Request timeout in seconds
+  temperature: 0.3              # Lower = more deterministic
+  max_retries: 3                # Number of retry attempts
+
+# Analysis settings
+analysis:
+  max_text_length: 10000        # Maximum text length for analysis
+  default_score: 5              # Default score when analysis fails

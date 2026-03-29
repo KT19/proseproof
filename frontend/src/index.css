@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* System font stacks - no external dependencies */
+:root {
+  /* Colors - Vintage Library Theme */
+  --color-primary-dark: #2c1810;
+  --color-primary-medium: #4a2c17;
+  --color-primary-light: #8b5e3c;
+  --color-secondary: #1a2b49;
+  --color-accent-gold: #c9a047;
+  --color-accent-red: #8b2e38;
+  --color-background: #f5f0e6;
+  --color-surface: #faf8f5;
+  --color-border: #d4c5a9;
+  --color-text-primary: #2d241e;
+  --color-text-secondary: #5d5245;
+  --color-text-muted: #8b8173;
+  --color-success: #3d6e42;
+  --color-warning: #c97c3d;
+  --color-error: #8b2e38;
+  
+  /* Typography - System font stacks */
+  --font-heading: Georgia, "Palatino Linotype", "Book Antiqua", serif;
+  --font-body: "Georgia", "Times New Roman", serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(44, 24, 16, 0.1);
+  --shadow-md: 0 4px 6px rgba(44, 24, 16, 0.15);
+  --shadow-lg: 0 10px 25px rgba(44, 24, 16, 0.2);
+  --shadow-xl: 0 20px 40px rgba(44, 24, 16, 0.25);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #2c1810, #4a2c17);
+  --gradient-gold: linear-gradient(135deg, #c9a047, #8b5e3c);
+  --gradient-hero: linear-gradient(135deg, #1a2b49, #2c1810);
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8e0d0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8b5e3c;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b4423;
+}
+
+/* Textarea custom scrollbar */
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: #e8e0d0;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #8b5e3c;
+  border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #6b4423;
+}
+
+/* Custom utility classes */
+.vintage-border {
+  border: 2px solid var(--color-border);
+  position: relative;
+}
+
+.vintage-border::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(201, 160, 71, 0.3);
+  pointer-events: none;
+}
+
+.paper-texture {
+  background-color: var(--color-background);
+  background-image: radial-gradient(circle, transparent 0%, rgba(44, 24, 16, 0.02) 100%);
+}
+
+.gold-accent {
+  color: var(--color-accent-gold);
+}
+
+.shadow-vintage {
+  box-shadow: var(--shadow-md);
+}
+
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-gold {
+  background: var(--gradient-gold);
+}
+
+.gradient-hero {
+  background: var(--gradient-hero);
+}
