@@ -26,6 +26,9 @@ if [ -f "$SCRIPT_DIR/.env" ]; then
             BACKEND_PORT) [ -z "$BACKEND_PORT" ] && BACKEND_PORT="$value" ;;
             FRONTEND_PORT) [ -z "$FRONTEND_PORT" ] && FRONTEND_PORT="$value" ;;
             BACKEND_HOST) [ -z "$BACKEND_HOST" ] && BACKEND_HOST="$value" ;;
+            BACKEND_URL) [ -z "$BACKEND_URL" ] && BACKEND_URL="$value" ;;
+            OLLAMA_BASE_URL) [ -z "$OLLAMA_BASE_URL" ] && OLLAMA_BASE_URL="$value" ;;
+            OLLAMA_MODEL) [ -z "$OLLAMA_MODEL" ] && OLLAMA_MODEL="$value" ;;
         esac
     done < "$SCRIPT_DIR/.env"
     echo "📄 Loaded environment variables from .env"
@@ -34,6 +37,7 @@ fi
 # Apply defaults if still not set
 BACKEND_PORT=${BACKEND_PORT:-$DEFAULT_BACKEND_PORT}
 FRONTEND_PORT=${FRONTEND_PORT:-$DEFAULT_FRONTEND_PORT}
+export BACKEND_HOST BACKEND_PORT FRONTEND_PORT BACKEND_URL OLLAMA_BASE_URL OLLAMA_MODEL
 
 LOG_DIR="$SCRIPT_DIR/logs"
 BACKEND_PID_FILE="$LOG_DIR/backend.pid"

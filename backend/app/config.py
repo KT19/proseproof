@@ -2,8 +2,24 @@ import os
 import yaml
 from pathlib import Path
 from typing import Any
+from dotenv import load_dotenv
 
 CONFIG_PATH = Path(__file__).parent.parent / "config" / "app.yaml"
+PROJECT_ROOT = CONFIG_PATH.parent.parent.parent
+ENV_PATH = PROJECT_ROOT / ".env"
+
+
+def _load_env() -> None:
+    """Load environment variables from the project root .env file."""
+    load_dotenv(ENV_PATH, override=False)
+
+
+def _normalize_base_url(url: str) -> str:
+    """Accept host:port values by defaulting to HTTP."""
+    cleaned = url.strip().rstrip("/")
+    if "://" not in cleaned:
+        return f"http://{cleaned}"
+    return cleaned
 
 
 def load_config() -> dict[str, Any]:
@@ -13,6 +29,7 @@ def load_config() -> dict[str, Any]:
 
 
 _config = load_config()
+_load_env()
 
 
 # Application config (ENV takes precedence over YAML)
@@ -26,7 +43,9 @@ DATABASE_URL = _config["database"]["url"]
 DATABASE_ECHO = _config["database"]["echo"]
 
 # Ollama config (ENV takes precedence over YAML)
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", _config["ollama"]["base_url"])
+OLLAMA_BASE_URL = _normalize_base_url(
+    os.getenv("OLLAMA_BASE_URL", _config["ollama"]["base_url"])
+)
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", _config["ollama"]["model"])
 OLLAMA_TIMEOUT = _config["ollama"]["timeout"]
 OLLAMA_TEMPERATURE = _config["ollama"]["temperature"]

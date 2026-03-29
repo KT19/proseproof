@@ -16,12 +16,17 @@ async def check_ollama_health():
                 data = response.json()
                 models = [m["name"] for m in data.get("models", [])]
                 is_model_available = OLLAMA_MODEL in models
+                message = (
+                    "Ollama is online"
+                    if is_model_available
+                    else f'Ollama is online, but model "{OLLAMA_MODEL}" is not installed'
+                )
 
                 return {
-                    "status": "healthy",
+                    "status": "healthy" if is_model_available else "degraded",
                     "connected": True,
                     "model_available": is_model_available,
-                    "message": "Ollama is online",
+                    "message": message,
                 }
     except Exception:
         pass
