@@ -1,6 +1,6 @@
 # ProseProof
 
-**Note** This project was created via vibe coding using a local LLM (Qwen 3.5-27B, `Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`) in OpenCode.
+**Note** This project was created via vibe coding mainly using a local LLM (Qwen 3.5-27B, `Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`) in OpenCode, with minimal refinement using Codex.
 
 An AI-powered writing assistant that provides real-time grammar corrections, style tips, and scoring powered by local AI.
 
